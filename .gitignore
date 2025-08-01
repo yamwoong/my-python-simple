@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+
+# dotenv environment variables
+.env
+.env.*
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# macOS system files
+.AppleDouble
+.LSOverride
+
+# Windows system files
+ehthumbs.db
+Icon?
+desktop.ini
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Secrets & credentials
+secrets/
+*.json
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Miscellaneous
+*.bak
+*.swp
