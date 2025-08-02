@@ -1,0 +1,57 @@
+# Node.js dependencies
+node_modules/
+
+# 환경 변수, 비밀정보
+.env
+.env.*
+
+# 로그파일, 임시파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# 운영체제별 임시/캐시 파일
+.DS_Store
+Thumbs.db
+
+# 에디터/IDE 설정파일
+.vscode/
+.idea/
+
+# 빌드 산출물(예: dist, build)
+dist/
+build/
+
+# 테스트 결과
+coverage/
+.nyc_output/
+jest-*
+
+# PM2 프로세스 로그
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 기타 개발중 생성되는 폴더/파일
+tmp/
+temp/
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# Docker, CI 도구 설정 (필요시)
+docker-compose.override.yml
+
+# Secrets & Credentials
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.json
+
+# VSCode 워크스페이스 설정
+*.code-workspace

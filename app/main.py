@@ -15,5 +15,5 @@ async def summarize_email(request: EmailSummaryRequest):
     """
     Accepts an English email text, returns both English summary and Korean translation.
     """
-    result = summarize_email_en_and_ko(request.text)
+    result = await summarize_email_en_and_ko(request.text)
     return result

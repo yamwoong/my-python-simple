@@ -1,6 +1,7 @@
 from transformers import pipeline
 from google.cloud import translate_v2 as translate
 from langdetect import detect
+from app.services.db import summaries_collection
 
 # Load the English summarization pipeline
 en_summarizer = pipeline("summarization")
@@ -8,7 +9,18 @@ en_summarizer = pipeline("summarization")
 # Load the Google Cloud Translation client
 translate_client = translate.Client()
 
-def summarize_email_en_and_ko(text: str):
+import asyncio
+
+async def save_summary(input_text, en_summary, ko_summary):
+    doc = {
+        "input": input_text,
+        "en_summary": en_summary,
+        "ko_summary": ko_summary
+    }
+    result = await summaries_collection.insert_one(doc)
+    return str(result.inserted_id)
+
+async def summarize_email_en_and_ko(text: str):
     """
     Summarize the input English text in both English and Korean.
     Returns both summaries regardless of input language.
@@ -37,8 +49,12 @@ def summarize_email_en_and_ko(text: str):
         ko_summary_text = ko_summary['translatedText']
     except Exception as e:
         ko_summary_text = f"Korean translation failed: {str(e)}"
-
+    
+    # Save to MongoDB
+    summary_id = await save_summary(text, en_summary_text, ko_summary_text)
+    
     return {
+        "id": summary_id,
         "input": text,
         "en_summary": en_summary_text,
         "ko_summary": ko_summary_text
